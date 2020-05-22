@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.47
+  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.48
 
 workflows:
   scheduled:
