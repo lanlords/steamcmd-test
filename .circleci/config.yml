@@ -1,0 +1,28 @@
+---
+version: 2.1
+
+orbs:
+  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.47
+
+workflows:
+  scheduled:
+    jobs:
+      - steamcmd-test/check:
+          repo_slug: lanlords/steamcmd-test
+          image_slug: lanlords/steamcmd-test
+          app_id: 740
+
+          filters:
+            branches:
+              only: master
+  updated:
+    jobs:
+      - steamcmd-test/build:
+          steamcmd_app_id: 740
+          docker_image_slug: lanlords/steamcmd-test
+
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
