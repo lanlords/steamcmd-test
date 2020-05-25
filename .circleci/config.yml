@@ -36,3 +36,6 @@ jobs:
       - run:
           name: envtest
           command: echo $DOCKER_USERNAME | cut -c 1-5
+      - run:
+          name: Docker Login
+          command: echo "$DOCKER_TOKEN" | docker login -u $DOCKER_USERNAME --password-stdin
