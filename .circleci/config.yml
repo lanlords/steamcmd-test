@@ -21,6 +21,10 @@ workflows:
             - run:
                 command: echo $DOCKER_USERNAME | cut -c 1-5
 
+          filters:
+            branches:
+              only: master
+
   updated:
     jobs:
       - steamcmd-test/build:
