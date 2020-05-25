@@ -15,9 +15,7 @@ workflows:
           filters:
             branches:
               only: master
-      - run:
-          name: Docker Login
-          command: echo "$DOCKER_TOKEN" | docker login -u $DOCKER_USERNAME --password-stdin
+      - dockertest
 
   updated:
     jobs:
