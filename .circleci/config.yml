@@ -27,3 +27,10 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+
+jobs:
+  dockertest:
+    steps:
+      - run:
+          name: envtest
+          command: echo $DOCKER_USERNAME | cut -c 1-5
