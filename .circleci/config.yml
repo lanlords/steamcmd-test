@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.49
+  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.50
 
 workflows:
   scheduled:
@@ -11,15 +11,6 @@ workflows:
           repo_slug: lanlords/steamcmd-test
           image_slug: lanlords/steamcmd-test
           app_id: 740
-
-          filters:
-            branches:
-              only: master
-
-      - envtest:
-          steps:
-            - run:
-                command: echo $DOCKER_USERNAME | cut -c 1-5
 
           filters:
             branches:
