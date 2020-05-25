@@ -15,6 +15,12 @@ workflows:
           filters:
             branches:
               only: master
+
+      - envtest:
+          steps:
+            - run:
+                command: echo $DOCKER_USERNAME | cut -c 1-5
+
   updated:
     jobs:
       - steamcmd-test/build:
