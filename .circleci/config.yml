@@ -14,6 +14,9 @@ workflows:
           repo_slug:  "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
           image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
           filters:
             branches:
               only: master
@@ -26,6 +29,8 @@ workflows:
           steamcmd_app_id: 740
           docker_image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
+    triggers:
+      - schedule:
           filters:
             tags:
               only: /^v.*/
