@@ -2,12 +2,14 @@
 version: 2.1
 
 orbs:
-  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.52
+  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.53
 
 workflows:
   scheduled:
     jobs:
       - steamcmd-test/check:
+          context: docker
+
           repo_slug: lanlords/steamcmd-test
           image_slug: lanlords/steamcmd-test
           app_id: 740
@@ -20,6 +22,7 @@ workflows:
     jobs:
       - steamcmd-test/build:
           context: docker
+
           steamcmd_app_id: 740
           docker_image_slug: lanlords/steamcmd-test
 
