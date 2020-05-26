@@ -10,8 +10,9 @@ workflows:
       - steamcmd-test/check:
           context: docker
 
-          repo_slug: lanlords/steamcmd-test
-          image_slug: lanlords/steamcmd-test
+          repo_slug:  "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+          image_slag: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+
           app_id: 740
 
           filters:
@@ -24,7 +25,7 @@ workflows:
           context: docker
 
           steamcmd_app_id: 740
-          docker_image_slug: lanlords/steamcmd-test
+          docker_image_slag: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
           filters:
             tags:
