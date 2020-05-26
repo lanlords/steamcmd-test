@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  lanlords-orb: jonakoudijs/steamcmd-test-orb@1.0.54
+  lanlords-orb: jonakoudijs/steamcmd-test-orb@1.0.55
 
 workflows:
   scheduled:
