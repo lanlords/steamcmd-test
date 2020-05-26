@@ -2,18 +2,17 @@
 version: 2.1
 
 orbs:
-  steamcmd-test: jonakoudijs/steamcmd-test-orb@1.0.53
+  lanlords-orb: jonakoudijs/steamcmd-test-orb@1.0.54
 
 workflows:
   scheduled:
     jobs:
-      - steamcmd-test/check:
+      - lanlords-orb/check:
           context: docker
 
+          app_id: 740
           repo_slug:  "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
           image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-
-          app_id: 740
 
           filters:
             branches:
@@ -21,7 +20,7 @@ workflows:
 
   updated:
     jobs:
-      - steamcmd-test/build:
+      - lanlords-orb/build:
           context: docker
 
           steamcmd_app_id: 740
