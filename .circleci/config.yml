@@ -19,7 +19,8 @@ workflows:
           cron: "0 * * * *"
           filters:
             branches:
-              only: master
+              only:
+                - master
 
   updated:
     jobs:
@@ -29,8 +30,6 @@ workflows:
           steamcmd_app_id: 740
           docker_image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
-    triggers:
-      - schedule:
           filters:
             tags:
               only: /^v.*/
