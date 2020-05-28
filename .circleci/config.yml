@@ -2,12 +2,12 @@
 version: 2.1
 
 orbs:
-  lanlords-orb: lanlords/steamcmd-orb@1.0.1
+  lanlords: lanlords/steamcmd-orb@1.0.1
 
 workflows:
   scheduled:
     jobs:
-      - lanlords-orb/check:
+      - lanlords/check:
           context: docker
 
           app_id: 740
@@ -24,7 +24,7 @@ workflows:
 
   updated:
     jobs:
-      - lanlords-orb/build:
+      - lanlords/build:
           context: docker
 
           steamcmd_app_id: 740
