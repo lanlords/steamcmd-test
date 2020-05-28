@@ -2,36 +2,28 @@
 version: 2.1
 
 orbs:
-  lanlords-orb: jonakoudijs/steamcmd-test-orb@1.0.57
+  orb-tools: circleci/orb-tools@9.1.0
+
+jobs:
+  reformat-version:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - run:
+          name: Reformat semver orb version
+          command: echo "export SEMVER_TAG=$(echo $CIRCLE_PROJECT_REPONAME | cut -c 2-)" >> $BASH_ENV
+
 
 workflows:
-  scheduled:
+  publish:
     jobs:
-      - lanlords-orb/check:
-          context: docker
+      - orb-tools/lint
+      - orb-tools/pack
 
-          app_id: 740
-          repo_slug:  "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-          image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-
-    triggers:
-      - schedule:
-          cron: "0 * * * *"
-          filters:
-            branches:
-              only:
-                - master
-
-  updated:
-    jobs:
-      - lanlords-orb/build:
-          context: docker
-
-          steamcmd_app_id: 740
-          docker_image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+      - reformat-version:
+          steps:
+            - run:
+                name: test output
+                command: |
+                  echo "$CIRCLE_PROJECT_REPONAME" && \
+                  echo "$SEMVER_TAG"
