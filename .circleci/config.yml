@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  lanlords: lanlords/steamcmd-orb@1.0.1
+  lanlords: lanlords/steamcmd-orb@1.1.1
 
 workflows:
   scheduled:
@@ -27,8 +27,9 @@ workflows:
       - lanlords/build:
           context: docker
 
-          steamcmd_app_id: 740
-          docker_image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+          app_id: 740
+          repo_slug:  "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+          image_slug: "$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
           filters:
             tags:
