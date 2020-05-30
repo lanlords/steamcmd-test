@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  lanlords: lanlords/steamcmd-orb@1.1.1
+  lanlords: lanlords/steamcmd-orb@1.2.0
 
 workflows:
   scheduled:
